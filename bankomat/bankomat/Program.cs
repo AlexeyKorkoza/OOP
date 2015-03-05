@@ -35,28 +35,8 @@ namespace bankomat
             return list;
         }
 
-        static void Main(string[] args)
+        static void calculation_write_in_file(List<bankomat> list, int money)
         {
-            Console.WriteLine("Текущий счет банка");
-            List<bankomat> list = read_and_output();
-            int all_money_of_bank = 0;
-            for (int i = 0; i < list.Count; i++)
-            {
-                Console.WriteLine("{0}\t{1}", list[i].nominal_banknotes, list[i].count_of_nominal);
-                all_money_of_bank = all_money_of_bank + list[i].nominal_banknotes * list[i].count_of_nominal;
-            }
-            Console.WriteLine("Введите суммму:");
-            int money = int.Parse(Console.ReadLine());
-            if (money < 20000)
-            {
-                Console.WriteLine("Минимальная сумма для ввода 20000руб");
-                Environment.Exit(0);
-            }
-            if (all_money_of_bank < money)
-            {
-                Console.WriteLine("В банкомате недостаточно средств");
-                Environment.Exit(0);
-            }
             int count = 0;
             int money_output = 0;
             int m = 0;
@@ -97,6 +77,31 @@ namespace bankomat
             {
                 Console.WriteLine("Данные в файл не были записаны");
             }
+        }
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Текущий счет банка");
+            List<bankomat> list = read_and_output();
+            int all_money_of_bank = 0;
+            for (int i = 0; i < list.Count; i++)
+            {
+                Console.WriteLine("{0}\t{1}", list[i].nominal_banknotes, list[i].count_of_nominal);
+                all_money_of_bank = all_money_of_bank + list[i].nominal_banknotes * list[i].count_of_nominal;
+            }
+            Console.WriteLine("Введите суммму:");
+            int money = int.Parse(Console.ReadLine());
+            if (money < 20000)
+            {
+                Console.WriteLine("Минимальная сумма для ввода 20000руб");
+                Environment.Exit(0);
+            }
+            if (all_money_of_bank < money)
+            {
+                Console.WriteLine("В банкомате недостаточно средств");
+                Environment.Exit(0);
+            }
+            calculation_write_in_file(list, money);            
         }
     }
 }
