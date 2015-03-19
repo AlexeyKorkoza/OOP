@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{21E9C289-6C65-4B9C-B847-6FAF9F2B32D1}</ProjectGuid>
+    <ProjectGuid>{74EDE409-52C7-4FAA-81F8-FAB92351632F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>bankomat</RootNamespace>

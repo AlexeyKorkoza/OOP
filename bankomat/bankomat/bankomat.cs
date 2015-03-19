@@ -8,7 +8,7 @@ namespace bankomat
 {
     class bankomat
     {
-        public int nominal_banknotes;
-        public int count_of_nominal;
+        public int nominal;
+        public int count;
     }
 }

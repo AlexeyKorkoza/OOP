@@ -4,3 +4,6 @@ c:\users\lesha\documents\visual studio 2012\Projects\bankomat\bankomat\bin\Debug
 c:\users\lesha\documents\visual studio 2012\Projects\bankomat\bankomat\obj\Debug\bankomat.csprojResolveAssemblyReference.cache
 c:\users\lesha\documents\visual studio 2012\Projects\bankomat\bankomat\obj\Debug\bankomat.exe
 c:\users\lesha\documents\visual studio 2012\Projects\bankomat\bankomat\obj\Debug\bankomat.pdb
+C:\Users\lesha\Desktop\bankomat\bankomat\bin\Debug\bankomat.exe.config
+C:\Users\lesha\Desktop\bankomat\bankomat\obj\Debug\bankomat.exe
+C:\Users\lesha\Desktop\bankomat\bankomat\obj\Debug\bankomat.pdb
