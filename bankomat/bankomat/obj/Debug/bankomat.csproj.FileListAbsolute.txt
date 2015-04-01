@@ -13,3 +13,9 @@ C:\Users\lesha\Desktop\Рабочий банкомат-без ооп\bankomat\ob
 C:\Users\lesha\Desktop\Рабочий банкомат-без ооп\bankomat\bin\Debug\bankomat.exe
 C:\Users\lesha\Desktop\Рабочий банкомат-без ооп\bankomat\bin\Debug\bankomat.pdb
 C:\Users\lesha\Desktop\Рабочий банкомат-без ооп\bankomat\obj\Debug\bankomat.csprojResolveAssemblyReference.cache
+D:\4 семестр\ООП\bankomat\bankomat\bin\Debug\bankomat.exe.config
+D:\4 семестр\ООП\bankomat\bankomat\obj\Debug\bankomat.exe
+D:\4 семестр\ООП\bankomat\bankomat\obj\Debug\bankomat.pdb
+D:\4 семестр\ООП\bankomat\bankomat\bin\Debug\bankomat.exe
+D:\4 семестр\ООП\bankomat\bankomat\bin\Debug\bankomat.pdb
+D:\4 семестр\ООП\bankomat\bankomat\obj\Debug\bankomat.csprojResolveAssemblyReference.cache

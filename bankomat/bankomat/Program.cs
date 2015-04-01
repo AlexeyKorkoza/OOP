@@ -5,22 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace bankomat
+namespace Cassetes
 {
-    class Program
+    class ATM
     {
         static void Main(string[] args)
         {
             try
             {
                 Console.WriteLine("Available for the issuance of banknotes");
-                List<bankomat> list = Read.read();
-                int all_money_of_bank = 0;
+                List<Cassetes> list = Read.read();
+                int allMoney = 0;
                 int min = list[0].nominal;
                 for (int i = 0; i < list.Count; i++)
                 {
                     Console.WriteLine("{0}",list[i].nominal);
-                    all_money_of_bank += list[i].nominal * list[i].count;
+                    allMoney += list[i].nominal * list[i].count;
                     if (list[i].nominal < min)
                     {
                         min = list[i].nominal;
@@ -31,9 +31,12 @@ namespace bankomat
                 {
                     Console.WriteLine("Input money:");
                     money = int.Parse(Console.ReadLine());
-                    GiveMoney.calculation_and_write_in_file(list, money, min);
+                    Dictionary<int, int> dic = GiveMoney.calculation(list, money, min);
+                    ICollection<int> keys = dic.Keys;
+                    foreach (int j in keys)
+                    Console.WriteLine("{0} {1}", j, dic[j]);
                 }
-                while (all_money_of_bank < money);
+                while (allMoney > money);
             }
             catch
             {

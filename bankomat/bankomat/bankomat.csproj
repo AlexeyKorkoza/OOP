@@ -7,7 +7,7 @@
     <ProjectGuid>{74EDE409-52C7-4FAA-81F8-FAB92351632F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>bankomat</RootNamespace>
+    <RootNamespace>Cassetes</RootNamespace>
     <AssemblyName>bankomat</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bankomat
+namespace Cassetes
 {
-    class bankomat
+    class Cassetes
     {
         public int nominal;
         public int count;
