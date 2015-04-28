@@ -42,8 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bankomat.cs" />
+    <Compile Include="Cassetes.cs" />
     <Compile Include="GiveMoney.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="ATM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Read.cs" />
   </ItemGroup>

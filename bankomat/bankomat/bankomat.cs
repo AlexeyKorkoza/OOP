@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cassetes
 {
-    class Cassetes
+    class Bankomat
     {
-        public int nominal;
-        public int count;
     }
 }

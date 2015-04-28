@@ -26,16 +26,19 @@ namespace Cassetes
                     if (cassetes.count != 0)
                     {
                         list.Add(cassetes);
-                    }                    
+                    }
                     line = string.Empty;
-                }
+                }                
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
                 sr.Close();
             }
-            catch
-            {
-                Console.WriteLine("File found not");
-            }
             return list;
-        }        
+        }   
     }
 }
