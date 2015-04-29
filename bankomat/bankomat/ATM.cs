@@ -27,22 +27,28 @@ namespace Cassetes
                     }
                 }
                 int money;
-                do
+               while(true)
                 {
-                    Console.WriteLine("Input money:");
-                    money = int.Parse(Console.ReadLine());
-                    SortedList<int,int> moneyoutput = GiveMoney.calculation(list, money, min);
+                    do
+                    {
+                        Console.WriteLine("Input money:");
+                        money = int.Parse(Console.ReadLine());
+                    }
+                    while (allMoney > money && money <= 0);
+                   SortedList<int, int> moneyoutput = GiveMoney.calculation(list, money, min);
                     ICollection<int> keys = moneyoutput.Keys;
-                    ICollection<int> values = moneyoutput.Values;
+                    Console.WriteLine("Total shot");
                     foreach (int j in keys)
-                        Console.WriteLine("{0}:{1}",j,(moneyoutput[j]));
-
+                    {
+                        if(moneyoutput[j]!=0)
+                        Console.WriteLine("{0}:{1}", moneyoutput[j],j);
+                    }
                 }
-                while (allMoney > money && money<= 0);
+                
             }
-            catch
+            catch(Exception ex)
             {
-                Console.WriteLine("Error");
+                Console.WriteLine(ex.Message);
             }
         }
     }

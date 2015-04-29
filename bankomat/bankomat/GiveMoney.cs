@@ -18,7 +18,6 @@ namespace Cassetes
                 int m = 0;
                 int change = 0;
                 m = money;
-                Cassetes cassetes = new Cassetes();
                 for (int p = 0; p < list.Count; p++)
                 {
                     if (list[p].count != 0)
@@ -29,10 +28,10 @@ namespace Cassetes
                         if (count < list[p].count)
                         {
                             change = m - count * list[p].nominal;
-                            if (change==0)
+                            if (change == 0)
                             {
                                 m = m - count * list[p].nominal;
-                                moneyoutput.Add(list[p].nominal,count);
+                                moneyoutput.Add(list[p].nominal, count);
                             }
                             else if (change < min)
                             {
@@ -53,7 +52,7 @@ namespace Cassetes
                             if (change == 0)
                             {
                                 m = m - list[p].count * list[p].nominal;
-                                moneyoutput.Add(list[p].nominal,list[p].count);
+                                moneyoutput.Add(list[p].nominal, list[p].count);
                             }
                             else if (change < min)
                             {
