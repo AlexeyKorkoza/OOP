@@ -14,7 +14,8 @@ namespace Cassetes
             try
             {
                 Console.WriteLine("Available for the issuance of banknotes");
-                List<Cassetes> list = Read.read();
+                IReader reader = new CSVReader();
+                List<Cassetes> list = reader.read();
                 int allMoney = 0;
                 int min = list[0].nominal;
                 for (int i = 0; i < list.Count; i++)
@@ -27,7 +28,7 @@ namespace Cassetes
                     }
                 }
                 int money;
-               while(true)
+                while (true)
                 {
                     do
                     {
@@ -35,16 +36,20 @@ namespace Cassetes
                         money = int.Parse(Console.ReadLine());
                     }
                     while (allMoney > money && money <= 0);
-                   SortedList<int, int> moneyoutput = GiveMoney.calculation(list, money, min);
+                    SortedList<int, int> moneyoutput = GiveMoney.calculation(list, money, min);
                     ICollection<int> keys = moneyoutput.Keys;
                     Console.WriteLine("Total shot");
                     foreach (int j in keys)
                     {
-                        if(moneyoutput[j]!=0)
-                        Console.WriteLine("{0}:{1}", moneyoutput[j],j);
+                        if (moneyoutput[j] != 0)
+                        {
+                            Console.WriteLine("{0}:{1}", moneyoutput[j], j);
+                            //list[j].count -=j;
+                        }
                     }
+                    //IWriter writer = new CSVWriter();
+                    //writer.write(list);
                 }
-                
             }
             catch(Exception ex)
             {

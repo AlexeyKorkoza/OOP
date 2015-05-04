@@ -77,9 +77,9 @@ namespace Cassetes
                     Console.WriteLine("The remainder of the amount entered:{0}", Math.Abs(m));
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                //Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
             }
             return moneyoutput;
         }
