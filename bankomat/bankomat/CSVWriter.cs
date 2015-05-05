@@ -15,7 +15,7 @@ namespace Cassetes
             list = new List<Cassetes>() { };
             for (int i = 0; i < list.Count; i++)
             {
-                sw.WriteLine(list[i].count + "," + list[i].nominal);
+                sw.WriteLine(list[i].count + "," + list[i].value);
             }
             sw.Close();
         }

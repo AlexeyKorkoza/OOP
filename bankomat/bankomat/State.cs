@@ -6,17 +6,14 @@ using System.Threading.Tasks;
 
 namespace Cassetes
 {
-    class Cassetes
+    class State
     {
-        public int value
+        public enum state
         {
-            get;
-            set;
-        }
-        public int count
-        {
-            get;
-            set;
+            Ok = 1,
+            NotEnoughMoney = 2,
+            InvalidInput = 3,
+            Error = 4,
         }
     }
 }

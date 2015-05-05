@@ -13,42 +13,45 @@ namespace Cassetes
         {
             try
             {
-                Console.WriteLine("Available for the issuance of banknotes");
-                IReader reader = new CSVReader();
-                List<Cassetes> list = reader.read();
-                int allMoney = 0;
-                int min = list[0].nominal;
-                for (int i = 0; i < list.Count; i++)
-                {
-                    Console.WriteLine("{0}", list[i].nominal);
-                    allMoney += list[i].nominal * list[i].count;
-                    if (list[i].nominal < min)
-                    {
-                        min = list[i].nominal;
-                    }
-                }
-                int money;
+                //Console.WriteLine("Available for the issuance of banknotes");
                 while (true)
                 {
+                    IReader reader = new CSVReader();
+                    List<Cassetes> list = reader.read();
+                    Console.WriteLine("balance:");
+                    int allMoney = 0;
+                    int min = list[0].value;
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        if (list[i].count != 0)
+                        {
+                            Console.WriteLine("{0}", list[i].value);
+                        }
+                        allMoney += list[i].value * list[i].count;
+                        if (list[i].value < min)
+                        {
+                            min = list[i].value;
+                        }
+                    }
+                    int money;
                     do
                     {
                         Console.WriteLine("Input money:");
                         money = int.Parse(Console.ReadLine());
                     }
-                    while (allMoney > money && money <= 0);
-                    SortedList<int, int> moneyoutput = GiveMoney.calculation(list, money, min);
-                    ICollection<int> keys = moneyoutput.Keys;
+                    while (allMoney > money && money < min);
+                    List<int> count = GiveMoney.calculation(list, money, min);
                     Console.WriteLine("Total shot");
-                    foreach (int j in keys)
+                    for(int i =0; i < count.Count;i++)
                     {
-                        if (moneyoutput[j] != 0)
+                        if (count[i] != 0)
                         {
-                            Console.WriteLine("{0}:{1}", moneyoutput[j], j);
-                            //list[j].count -=j;
+                            Console.WriteLine("{0}:{1}", count[i], list[i].value);
+                            list[i].value -= count[i];
                         }
                     }
-                    //IWriter writer = new CSVWriter();
-                    //writer.write(list);
+                    IWriter writer = new CSVWriter();
+                    writer.write(list);
                 }
             }
             catch(Exception ex)

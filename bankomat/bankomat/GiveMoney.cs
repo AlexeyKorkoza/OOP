@@ -9,9 +9,9 @@ namespace Cassetes
 {
     class GiveMoney
     {
-        public static SortedList<int, int> calculation(List<Cassetes> list, int money, int min)
+        public static List<int> calculation(List<Cassetes> list, int money, int min)
         {
-            SortedList<int, int> moneyoutput = new SortedList<int, int>();
+            List<int> moneyoutput = new List<int>();
             try
             {
                 int count = 0;
@@ -24,52 +24,53 @@ namespace Cassetes
                     {
                         if (m == 0)
                             break;
-                        count = m / list[p].nominal;
+                        count = m / list[p].value;
                         if (count < list[p].count)
                         {
-                            change = m - count * list[p].nominal;
+                            change = m - count * list[p].value;
                             if (change == 0)
                             {
-                                m = m - count * list[p].nominal;
-                                moneyoutput.Add(list[p].nominal, count);
+                                m = m - count * list[p].value;
+                                moneyoutput.Add(count);
                             }
                             else if (change < min)
                             {
                                 count--;
-                                m = m - count * list[p].nominal;
-                                moneyoutput.Add(list[p].nominal, count);
+                                m = m - count * list[p].value;
+                                moneyoutput.Add(count);
                             }
                             else
                             {
-                                m -= count * list[p].nominal;
-                                moneyoutput.Add(list[p].nominal, count);
+                                m -= count * list[p].value;
+                                moneyoutput.Add(count);
                             }
                             list[p].count -= count;
                         }
                         else
                         {
-                            change = m - count * list[p].nominal;
+                            change = m - count * list[p].value;
                             if (change == 0)
                             {
-                                m = m - list[p].count * list[p].nominal;
-                                moneyoutput.Add(list[p].nominal, list[p].count);
+                                m = m - list[p].count * list[p].value;
+                                moneyoutput.Add(list[p].count);
                             }
                             else if (change < min)
                             {
                                 list[p].count--;
-                                m = m - list[p].count * list[p].nominal;
-                                moneyoutput.Add(list[p].nominal, list[p].count);
+                                m = m - list[p].count * list[p].value;
+                                moneyoutput.Add(list[p].count);
                             }
                             else
                             {
-                                m -= list[p].count * list[p].nominal;
-                                moneyoutput.Add(list[p].nominal, list[p].count);
+                                m -= list[p].count * list[p].value;
+                                moneyoutput.Add(list[p].count);
                             }
                             list[p].count -= list[p].count;
                         }
                         count = 0;
                         change = 0;
                     }
+                    else moneyoutput.Add(0);
                 }
                 if (m > 0)
                 {

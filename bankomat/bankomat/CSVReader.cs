@@ -22,13 +22,11 @@ namespace Cassetes
                     array = line.Split(new char[] { ',', '\t' });
                     Cassetes cassetes = new Cassetes();
                     cassetes.count = int.Parse(array[0]);
-                    cassetes.nominal = int.Parse(array[1]);
-                    if (cassetes.count != 0)
-                    {
-                        list.Add(cassetes);
-                    }
+                    cassetes.value = int.Parse(array[1]);
+                    list.Add(cassetes);
                     line = string.Empty;
                 }
+                sr.Close();
             }
              catch(FileNotFoundException ex)
             {

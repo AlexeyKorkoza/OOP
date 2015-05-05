@@ -26,8 +26,8 @@ namespace Cassetes
                     {
                        if (childnode.Name == "count")            
                            cassetes.count = Convert.ToInt32(childnode.InnerText);
-                       if(childnode.Name == "value")
-                           cassetes.nominal = Convert.ToInt32(childnode.InnerText);
+                       if (childnode.Name == "value")
+                           cassetes.value = Convert.ToInt32(childnode.InnerText);
                    }
                    list.Add(cassetes);
                }
