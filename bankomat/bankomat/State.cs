@@ -10,10 +10,8 @@ namespace Cassetes
     {
         public enum state
         {
-            Ok = 1,
-            NotEnoughMoney = 2,
-            InvalidInput = 3,
-            Error = 4,
+            NotEnoughMoney = 1,
+            InvalidInput = 2,
         }
     }
 }

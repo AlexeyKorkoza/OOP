@@ -73,10 +73,7 @@ namespace Cassetes
                     else moneyoutput.Add(0);
                 }
                 if (m > 0)
-                {
-                    Console.WriteLine("The bank can not repay in full");
-                    Console.WriteLine("The remainder of the amount entered:{0}", Math.Abs(m));
-                }
+                   Console.WriteLine(State.state.NotEnoughMoney);
             }
             catch(Exception ex)
             {

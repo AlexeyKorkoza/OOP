@@ -32,7 +32,7 @@ namespace Cassetes
                    list.Add(cassetes);
                }
            }
-           catch (XmlException ex)
+           catch(XmlException ex)
            {
                Console.WriteLine(ex.Message);
            }
