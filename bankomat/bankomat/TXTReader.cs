@@ -23,10 +23,7 @@ namespace Cassetes
                     Cassetes cassetes = new Cassetes();
                     cassetes.count = int.Parse(array[0]);
                     cassetes.value = int.Parse(array[1]);
-                    if (cassetes.count != 0)
-                    {
-                        list.Add(cassetes);
-                    }
+                    list.Add(cassetes);
                     line = string.Empty;
                 }
             }

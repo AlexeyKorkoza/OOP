@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <ArrayOfCassetes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Cassetes>
-    <value>100</value>
-    <count>4</count>
+    <value>50</value>
+    <count>0</count>
   </Cassetes>
   <Cassetes>
     <value>50</value>
-    <count>8</count>
+    <count>0</count>
   </Cassetes>
   <Cassetes>
     <value>20</value>
-    <count>8</count>
+    <count>0</count>
   </Cassetes>
 </ArrayOfCassetes>

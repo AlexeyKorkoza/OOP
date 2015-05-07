@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Serialization;
+using System.IO;
+using System.Runtime.Serialization;
 
 namespace Cassetes
 {
@@ -17,19 +20,19 @@ namespace Cassetes
            try
            {
                XmlDocument xDoc = new XmlDocument();
-                xDoc.Load("XMLFile.xml");
-                XmlElement xRoot = xDoc.DocumentElement;
-                foreach(XmlElement xnode in xRoot)
-                {
-                    Cassetes cassetes = new Cassetes();
-                    foreach (XmlNode childnode in xnode.ChildNodes)
-                    {
-                       if (childnode.Name == "count")            
+               xDoc.Load("XMLFile.xml");
+               XmlElement xRoot = xDoc.DocumentElement;
+               foreach (XmlElement xnode in xRoot)
+               {
+                   Cassetes cassetes = new Cassetes();
+                   foreach (XmlNode childnode in xnode.ChildNodes)
+                   {
+                       if (childnode.Name == "count")
                            cassetes.count = Convert.ToInt32(childnode.InnerText);
                        if (childnode.Name == "value")
                            cassetes.value = Convert.ToInt32(childnode.InnerText);
-                    }
-                    list.Add(cassetes);
+                   }
+                   list.Add(cassetes);
                }
            }
            catch(XmlException ex)

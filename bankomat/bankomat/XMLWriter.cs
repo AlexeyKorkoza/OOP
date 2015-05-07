@@ -15,11 +15,9 @@ namespace Cassetes
         {  
             string Path = @"XMLFile.xml";
             XmlSerializer xmlFormat = new XmlSerializer(typeof(List<Cassetes>));
-            using (Stream fStream = new FileStream(Path,FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
-            {
-                xmlFormat.Serialize(fStream, list);
-                fStream.Close();
-            }
+            Stream fStream = new FileStream(Path, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None);
+            xmlFormat.Serialize(fStream, list);
+            fStream.Close();
          }        
     }
 }

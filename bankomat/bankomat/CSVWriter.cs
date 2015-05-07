@@ -16,6 +16,7 @@ namespace Cassetes
             {
                 for (int i = 0; i < list.Count; i++)
                 {
+                    if(list[i].count!=0)
                     sw.WriteLine(list[i].count + "," + list[i].value);
                 }
             }
