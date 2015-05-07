@@ -7,14 +7,13 @@ using System.IO;
 
 namespace Cassetes
 {
-    class TXTWriter
+    class TXTWriter:IWriter
     {
         public void write(List<Cassetes> list)
         {
             StreamWriter sw = new StreamWriter("bankomat.txt", true);
             try
             {
-                list = new List<Cassetes>() { };
                 for (int i = 0; i < list.Count; i++)
                 {
                     sw.WriteLine(list[i].count + " " + list[i].value);

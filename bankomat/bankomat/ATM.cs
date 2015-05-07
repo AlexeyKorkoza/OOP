@@ -13,10 +13,10 @@ namespace Cassetes
         {
             try
             {
+                IReader reader = new JSONReader();
+                List<Cassetes> list = reader.read();
                 while (true)
-                {
-                    IReader reader = new CSVReader();
-                    List<Cassetes> list = reader.read();
+                {                    
                     Console.WriteLine("Balance:");
                     int allMoney = 0;
                     int min = list[0].value;
@@ -29,35 +29,29 @@ namespace Cassetes
                             min = list[i].value;
                     }
                     Console.WriteLine("Max sum:{0}", allMoney);
-                    Console.WriteLine("Input a number:\n1 - Continue\n2 - Exit of bankomat");
-                    int input = int.Parse(Console.ReadLine());
-                    if (input == 1)
+                    int money;
+                    do
                     {
-                        int money;
-                        do
-                        {
-                            Console.WriteLine("Input money:");
-                            money = int.Parse(Console.ReadLine());
-                        }
-                        while (allMoney > money && money < min);
-                        List<int> count = GiveMoney.calculation(list, money, min);
-                        Console.WriteLine("Total shot");
-                        for (int i = 0; i < count.Count; i++)
-                        {
-                            if (count[i] != 0)
-                            {
-                                Console.WriteLine("{0}:{1}", count[i], list[i].value);
-                                list[i].value -= count[i];
-                            }
-                        }
-                        Console.WriteLine("======================================");
+                        Console.WriteLine("Input money:");
+                        money = int.Parse(Console.ReadLine());
                     }
-                    if (input == 2)
-                        Environment.Exit(0);
+                    while (allMoney > money && money < min);
+                    List<int> count = GiveMoney.calculation(list, money, min);
+                    Console.WriteLine("Total shot");
+                    for (int i = 0; i < count.Count; i++)
+                    {
+                        if (count[i] != 0)
+                        {
+                            Console.WriteLine("{0}:{1}", count[i], list[i].value);
+                            list[i].count -= count[i];
+                        }
+                    }
+                    IWriter writer = new JSONWriter();//баг есть, на 2 умножет почему-то
+                    writer.write(list);
+                    Console.WriteLine("======================================");
                 }
-                
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }

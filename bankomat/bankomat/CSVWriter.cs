@@ -11,10 +11,9 @@ namespace Cassetes
     {
         public void write(List<Cassetes> list)
         {
-            StreamWriter sw = new StreamWriter("CSVFile.csv", true);
+            StreamWriter sw = new StreamWriter("CSVFile.csv", false);
             try
             {
-                list = new List<Cassetes>() { };
                 for (int i = 0; i < list.Count; i++)
                 {
                     sw.WriteLine(list[i].count + "," + list[i].value);

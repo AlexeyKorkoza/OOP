@@ -17,6 +17,7 @@ namespace Cassetes
                 int count = 0;
                 int m = 0;
                 int change = 0;
+                int perem = 0;
                 m = money;
                 for (int p = 0; p < list.Count; p++)
                 {
@@ -70,7 +71,7 @@ namespace Cassetes
                         count = 0;
                         change = 0;
                     }
-                    else moneyoutput.Add(0);
+                    else moneyoutput.Add(perem);
                 }
                 if (m > 0)
                    Console.WriteLine(State.state.NotEnoughMoney);
