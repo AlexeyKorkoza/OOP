@@ -12,13 +12,14 @@ namespace Cassetes
         static void Main(string[] args)
         {
             try
-            {
-                IReader reader = new JSONReader();
+            {               
+                IReader reader = new TXTReader();
                 List<Cassetes> list = reader.read();
                 while (true)
-                {                    
-                    Console.WriteLine("Balance:");
+                {
                     int allMoney = 0;
+                    int removed = 0;
+                    Console.WriteLine("Balance:");
                     int min = list[0].value;
                     for (int i = 0; i < list.Count; i++)
                     {
@@ -28,7 +29,7 @@ namespace Cassetes
                         if (list[i].value < min)
                             min = list[i].value;
                     }
-                    Console.WriteLine("Max sum:{0}", allMoney);
+                    Console.WriteLine("Max sum:{0}", allMoney - removed);
                     int money;
                     do
                     {
@@ -41,12 +42,10 @@ namespace Cassetes
                     for (int i = 0; i < count.Count; i++)
                     {
                         if (count[i] != 0)
-                        {
                             Console.WriteLine("{0}:{1}", count[i], list[i].value);
-                            list[i].count -= count[i];
-                        }
+                        removed = list[i].value * count[i];
                     }
-                    IWriter writer = new JSONWriter();//баг есть, на 2 умножет почему-то
+                    IWriter writer = new TXTWriter();
                     writer.write(list);
                     Console.WriteLine("======================================");
                 }

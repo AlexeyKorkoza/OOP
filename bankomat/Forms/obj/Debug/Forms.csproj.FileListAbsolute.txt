@@ -1,0 +1,9 @@
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\bin\Debug\Forms.exe.config
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\bin\Debug\Forms.exe
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\bin\Debug\Forms.pdb
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\obj\Debug\Forms.csprojResolveAssemblyReference.cache
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\obj\Debug\Forms.Form1.resources
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\obj\Debug\Forms.Properties.Resources.resources
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\obj\Debug\Forms.csproj.GenerateResource.Cache
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\obj\Debug\Forms.exe
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\obj\Debug\Forms.pdb

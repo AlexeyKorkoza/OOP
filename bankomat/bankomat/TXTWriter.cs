@@ -11,7 +11,7 @@ namespace Cassetes
     {
         public void write(List<Cassetes> list)
         {
-            StreamWriter sw = new StreamWriter("bankomat.txt", true);
+            StreamWriter sw = new StreamWriter("bankomat.txt", false);
             try
             {
                 for (int i = 0; i < list.Count; i++)
