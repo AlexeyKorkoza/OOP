@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cassetes
+namespace Cassetes.State
 {
     class State
     {

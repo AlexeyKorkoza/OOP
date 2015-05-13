@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Runtime.Serialization;
 
-namespace Cassetes
+namespace Cassetes.Reader
 {
    class XMLReader: IReader
     {        

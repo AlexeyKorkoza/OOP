@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Cassetes;
+using Cassetes.Operation;
+using Cassetes.Reader;
+using Cassetes.State;
+using Cassetes.Writer;
 
 namespace Cassetes
 {
@@ -13,7 +18,7 @@ namespace Cassetes
         {
             try
             {               
-                IReader reader = new TXTReader();
+                IReader reader = new CSVReader();
                 List<Cassetes> list = reader.read();
                 while (true)
                 {
@@ -25,27 +30,33 @@ namespace Cassetes
                     {
                         if (list[i].count != 0)
                             Console.WriteLine("{0}", list[i].value);
+
                         allMoney += list[i].value * list[i].count;
+                        
                         if (list[i].value < min)
                             min = list[i].value;
                     }
                     Console.WriteLine("Max sum:{0}", allMoney - removed);
                     int money;
+
                     do
                     {
                         Console.WriteLine("Input money:");
                         money = int.Parse(Console.ReadLine());
                     }
-                    while (allMoney > money && money < min);
+                    while (allMoney < money || money < min || money < 0);
+
                     List<int> count = GiveMoney.calculation(list, money, min);
                     Console.WriteLine("Total shot");
+
                     for (int i = 0; i < count.Count; i++)
                     {
                         if (count[i] != 0)
                             Console.WriteLine("{0}:{1}", count[i], list[i].value);
                         removed = list[i].value * count[i];
                     }
-                    IWriter writer = new TXTWriter();
+
+                    IWriter writer = new CSVWriter();
                     writer.write(list);
                     Console.WriteLine("======================================");
                 }

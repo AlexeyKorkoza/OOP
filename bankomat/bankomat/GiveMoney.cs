@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace Cassetes
+namespace Cassetes.Operation
 {
     class GiveMoney
     {
@@ -74,7 +74,7 @@ namespace Cassetes
                     else moneyoutput.Add(perem);
                 }
                 if (m > 0)
-                   Console.WriteLine(State.state.NotEnoughMoney);
+                   Console.WriteLine(State.State.state.NotEnoughMoney);
             }
             catch(Exception ex)
             {

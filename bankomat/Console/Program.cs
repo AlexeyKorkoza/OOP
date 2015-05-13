@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cassetes;
+using Cassetes.Writer;
+using Cassetes.State;
+using Cassetes.Reader;
+using Cassetes.Operation;
 
 namespace Console
 {
+   
     class Program
     {
-        static void Main(string[] args)
+        private void Main(string[] args)
         {
+            
         }
     }
 }

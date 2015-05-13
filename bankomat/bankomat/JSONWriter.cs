@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization.Json;
 using System.IO;
 
-namespace Cassetes
+namespace Cassetes.Writer
 {
     class JSONWriter : IWriter
     {

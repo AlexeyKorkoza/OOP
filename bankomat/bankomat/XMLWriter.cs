@@ -7,7 +7,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 
-namespace Cassetes
+namespace Cassetes.Writer
 {
     class XMLWriter:IWriter
     {
