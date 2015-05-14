@@ -15,57 +15,39 @@ namespace Console
                 bankomat.InputCassettes(list);
                 while (true)
                 {
-                    string str = System.Console.ReadLine();
-                    int sum ;
-                    if (int.TryParse(str, out sum))
-                    {
-                        var money = bankomat.Money(sum);
-                        System.Console.WriteLine("Total shot");
-
-                        for (int i = 0; i < money.Count; i++)
-                        {
-                            if (money[i] != 0)
-                                System.Console.WriteLine("{0}:{1}", money[i], list[i].Nominal);
-                        }
-                    }
-                    /*var allMoney = 0;
-                    var removed = 0;
-                    System.Console.WriteLine("Balance:");
-                    int min = list[0].value;
+                    System.Console.WriteLine("Balance");
                     foreach (Cassetes.Cassetes item in list)
                     {
-                        if (item.count != 0)
-                            System.Console.WriteLine("{0}", item.value);
-
-                        allMoney += item.value * item.count;
-
-                        if (item.value < min)
-                            min = item.value;
+                        if (item.Count != 0)
+                        {
+                            System.Console.WriteLine(item.Nominal);
+                        }
                     }
-                    System.Console.WriteLine("Max sum:{0}", allMoney - removed);
-                    int money = 0;
-
-                    do
+                    System.Console.WriteLine("Menu:\ninput - input sum;\nexit - exit from bankomat");
+                    string input = System.Console.ReadLine();
+                    if (input == "input")
                     {
-                        System.Console.WriteLine("Input money:");
-                        var str = System.Console.ReadLine();
-                        if (str != null) money = int.Parse(str);
+                        System.Console.WriteLine("Input sum:");
+                        string str = System.Console.ReadLine();
+                        int sum;
+                        if (int.TryParse(str, out sum))
+                        {
+                            var money = bankomat.Withdraw(sum);
+                            if (money.Count != 0)
+                            {
+                                System.Console.WriteLine("Total shot:");
+                                for (int i = 0; i < money.Count; i++)
+                                {
+                                    if (money[i] != 0)
+                                        System.Console.WriteLine("{0}:{1}", money[i], list[i].Nominal);
+                                }
+                            }
+                            else System.Console.WriteLine(State.MoneyIsNotIssued);
+                        }
+                        else System.Console.WriteLine(State.InputError);
                     }
-                    while (allMoney < money || money < min || money < 0);
-
-                    List<int> count = GiveMoney.calculation(list, money, min);
-                    System.Console.WriteLine("Total shot");
-
-                    for (int i = 0; i < count.Count; i++)
-                    {
-                        if (count[i] != 0)
-                            System.Console.WriteLine("{0}:{1}", count[i], list[i].value);
-                    }
-
-                    IWriter writer = new CSVWriter();
-                    writer.write(list);
-                    System.Console.WriteLine("======================================");
-                     */
+                    if(input=="exit")
+                        Environment.Exit(0);
                 }
             }
             catch (Exception ex)

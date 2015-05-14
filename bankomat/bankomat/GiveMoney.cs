@@ -8,6 +8,7 @@ namespace Cassetes
         public static List<int> Calculation(List<Cassetes> list, int money, int min)
         {
             List<int> moneyoutput = new List<int>();
+            int removed = 0;
             try
             {
                 int perem = 0;
@@ -16,8 +17,6 @@ namespace Cassetes
                 {
                     if (item.Count != 0)
                     {
-                        if (m == 0)
-                            break;
                         var count = m / item.Nominal;
                         int change;
                         if (count < item.Count)
@@ -40,6 +39,7 @@ namespace Cassetes
                                 moneyoutput.Add(count);
                             }
                             item.Count -= count;
+                            removed += count*item.Nominal;
                         }
                         else
                         {
@@ -61,19 +61,19 @@ namespace Cassetes
                                 moneyoutput.Add(item.Count);
                             }
                             item.Count -= item.Count;
+                            removed += count * item.Nominal;
                         }
                     }
                     else moneyoutput.Add(perem);
                 }
-                //if (m > 0)
-                //   Console.WriteLine(State.state.NotEnoughMoney);
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-            return moneyoutput;
+            if (removed == money)
+                return moneyoutput;
+            else return new List<int>(); 
         }
-
     }
 }

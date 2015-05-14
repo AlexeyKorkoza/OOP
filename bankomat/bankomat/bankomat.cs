@@ -7,17 +7,16 @@ namespace Cassetes
     {
         private List<Cassetes> _list = new List<Cassetes>(); 
         private int _min = int.MaxValue;
-        public List<int> Money(int m)
+        public List<int> Withdraw(int m)
         {
             if (m > TotalSum || m < _min)
             {
                 return new List<int>();
             }
-            //TODO: сделать проверку соответствия выдаваемой суммы и требуемой
-            var dengi = GiveMoney.Calculation(_list, m, _min);
+            var money = GiveMoney.Calculation(_list, m, _min);
             IWriter writer = new CsvWriter();
             writer.Write(_list);
-            return dengi;
+            return money;
         }
         public void InputCassettes(List<Cassetes> data)
         {
