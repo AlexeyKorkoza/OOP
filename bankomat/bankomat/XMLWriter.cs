@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Serialization;
+﻿using System.Collections.Generic;
 using System.IO;
+using System.Xml.Serialization;
 
-namespace Cassetes.Writer
+namespace Cassetes
 {
-    class XMLWriter:IWriter
+    public class XmlWriter:IWriter
     {
-        public void write(List<Cassetes> list)
+        public void Write(List<Cassetes> list)
         {  
             string Path = @"XMLFile.xml";
             XmlSerializer xmlFormat = new XmlSerializer(typeof(List<Cassetes>));

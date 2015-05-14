@@ -19,9 +19,8 @@ D:\4 семестр\ООП\bankomat\bankomat\obj\Debug\bankomat.pdb
 D:\4 семестр\ООП\bankomat\bankomat\bin\Debug\bankomat.exe
 D:\4 семестр\ООП\bankomat\bankomat\bin\Debug\bankomat.pdb
 D:\4 семестр\ООП\bankomat\bankomat\obj\Debug\bankomat.csprojResolveAssemblyReference.cache
-C:\Users\lesha\Desktop\lol\OOP-master\bankomat\bankomat\bin\Debug\bankomat.exe.config
-C:\Users\lesha\Desktop\lol\OOP-master\bankomat\bankomat\obj\Debug\bankomat.exe
 C:\Users\lesha\Desktop\lol\OOP-master\bankomat\bankomat\obj\Debug\bankomat.pdb
-C:\Users\lesha\Desktop\lol\OOP-master\bankomat\bankomat\bin\Debug\bankomat.exe
 C:\Users\lesha\Desktop\lol\OOP-master\bankomat\bankomat\bin\Debug\bankomat.pdb
 C:\Users\lesha\Desktop\lol\OOP-master\bankomat\bankomat\obj\Debug\bankomat.csprojResolveAssemblyReference.cache
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\bankomat\bin\Debug\bankomat.dll
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\bankomat\obj\Debug\bankomat.dll

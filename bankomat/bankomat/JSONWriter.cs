@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.Serialization.Json;
+﻿using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Json;
 
-namespace Cassetes.Writer
+namespace Cassetes
 {
-    class JSONWriter : IWriter
+    public class JsonWriter : IWriter
     {
-        public void write(List<Cassetes> list)
+        public void Write(List<Cassetes> list)
         {
             string Path = @"JSONFile.json";
             DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(List<Cassetes>));

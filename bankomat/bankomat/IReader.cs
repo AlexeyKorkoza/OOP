@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace Cassetes.Reader
+namespace Cassetes
 {
-    interface IReader
+    public interface IReader
     {
-     List<Cassetes> read();
+     List<Cassetes> Read();
     }
 }

@@ -1,39 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
-using System.Xml.Linq;
-using System.Xml.Serialization;
-using System.IO;
-using System.Runtime.Serialization;
 
-namespace Cassetes.Reader
+namespace Cassetes
 {
-   class XMLReader: IReader
+   public class XmlReader: IReader
     {        
-       public List<Cassetes> read()
+       public List<Cassetes> Read()
         {
-           XmlTextReader  reader = new XmlTextReader("XMLFile.xml");
-           List<Cassetes> list = new List<Cassetes>() { };
+           List<Cassetes> list = new List<Cassetes>();
            try
            {
                XmlDocument xDoc = new XmlDocument();
                xDoc.Load("XMLFile.xml");
                XmlElement xRoot = xDoc.DocumentElement;
-               foreach (XmlElement xnode in xRoot)
-               {
-                   Cassetes cassetes = new Cassetes();
-                   foreach (XmlNode childnode in xnode.ChildNodes)
+               if (xRoot != null)
+                   foreach (XmlElement xnode in xRoot)
                    {
-                       if (childnode.Name == "count")
-                           cassetes.count = Convert.ToInt32(childnode.InnerText);
-                       if (childnode.Name == "value")
-                           cassetes.value = Convert.ToInt32(childnode.InnerText);
+                       Cassetes cassetes = new Cassetes();
+                       foreach (XmlNode childnode in xnode.ChildNodes)
+                       {
+                           if (childnode.Name == "count")
+                               cassetes.Count = Convert.ToInt32(childnode.InnerText);
+                           if (childnode.Name == "value")
+                               cassetes.Nominal = Convert.ToInt32(childnode.InnerText);
+                       }
+                       list.Add(cassetes);
                    }
-                   list.Add(cassetes);
-               }
            }
            catch(XmlException ex)
            {

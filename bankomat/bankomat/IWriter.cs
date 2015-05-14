@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace Cassetes.Writer
+namespace Cassetes
 {
-   interface IWriter
+    public interface IWriter
     {
-      void write(List<Cassetes> list);
+      void Write(List<Cassetes> list);
     }
 }

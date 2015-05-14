@@ -1,31 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
-namespace Cassetes.Reader
+namespace Cassetes
 {
-    class CSVReader : IReader
+    public class CsvReader : IReader
     {
-        public List<Cassetes> read()
+        public List<Cassetes> Read()
         {
-            List<Cassetes> list = new List<Cassetes>() { };
+            List<Cassetes> list = new List<Cassetes>();
             StreamReader sr = new StreamReader("CSVFile.csv");
-            string line;
-            string[] array;
             try
             {
+                string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    array = line.Split(new char[] { ',', '\t' });
-                    Cassetes cassetes = new Cassetes();
-                    cassetes.count = int.Parse(array[0]);
-                    cassetes.value = int.Parse(array[1]);
-                    if (cassetes.count > 0)
+                    var array = line.Split(',', '\t');
+                    var cassetes = new Cassetes
+                    {
+                        Count = int.Parse(array[0]),
+                        Nominal = int.Parse(array[1])
+                    };
+                    if (cassetes.Count > 0)
                     list.Add(cassetes);
-                    line = string.Empty;
                 }
             }
             catch(FileNotFoundException ex)

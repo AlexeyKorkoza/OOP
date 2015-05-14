@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
-namespace Cassetes.Writer
+namespace Cassetes
 {
-    class CSVWriter:IWriter
+    public class CsvWriter:IWriter
     {
-        public void write(List<Cassetes> list)
+        public void Write(List<Cassetes> list)
         {
             StreamWriter sw = new StreamWriter("CSVFile.csv", false);
             try
             {
-                for (int i = 0; i < list.Count; i++)
+                foreach (Cassetes itemCassetes in list)
                 {
-                    if(list[i].count!=0)
-                    sw.WriteLine(list[i].count + "," + list[i].value);
+                    if(itemCassetes.Count!=0)
+                        sw.WriteLine(itemCassetes.Count + "," + itemCassetes.Nominal);
                 }
             }
             catch(FileNotFoundException ex)

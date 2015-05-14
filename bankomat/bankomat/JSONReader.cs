@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Json;
 
-namespace Cassetes.Reader
+namespace Cassetes
 {
-    class JSONReader:IReader
+    class JsonReader:IReader
     {
-        public List<Cassetes> read()
+        public List<Cassetes> Read()
         {
             string Path = @"JSONFIle.json";
             DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(List<Cassetes>));
