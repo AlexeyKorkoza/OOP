@@ -4,13 +4,12 @@ using System.Runtime.Serialization.Json;
 
 namespace Cassetes
 {
-    class JsonReader:IReader
+    public class JsonReader:IReader
     {
-        public List<Cassetes> Read()
+        public List<Cassetes> Read(string path)
         {
-            string Path = @"JSONFIle.json";
             DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(List<Cassetes>));
-            Stream fstream = new FileStream(Path,FileMode.Open);
+            Stream fstream = new FileStream(path,FileMode.Open);
             var temp = (List<Cassetes>)json.ReadObject(fstream);
             fstream.Close();
             return temp;

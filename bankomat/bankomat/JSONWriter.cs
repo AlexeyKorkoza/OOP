@@ -6,11 +6,10 @@ namespace Cassetes
 {
     public class JsonWriter : IWriter
     {
-        public void Write(List<Cassetes> list)
+        public void Write(List<Cassetes> list,string path)
         {
-            string Path = @"JSONFile.json";
-            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(List<Cassetes>));
-            using (Stream fStream = new FileStream(Path, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
+            var json = new DataContractJsonSerializer(typeof(List<Cassetes>));
+            using (Stream fStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
             {
                 json.WriteObject(fStream, list);
                 fStream.Close();

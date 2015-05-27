@@ -4,6 +4,6 @@ namespace Cassetes
 {
     public interface IReader
     {
-     List<Cassetes> Read();
+     List<Cassetes> Read(string path);
     }
 }

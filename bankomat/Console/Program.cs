@@ -1,5 +1,8 @@
 ﻿using System;
 using Cassetes;
+using System.Configuration;
+using System.Linq;
+
 
 namespace Console
 {
@@ -7,36 +10,35 @@ namespace Console
     {
         static void Main()
         {
+          
             try
             {
-                Bankomat bankomat = new Bankomat();
-                IReader reader = new CsvReader();
-                var list = reader.Read();
+                var path = ConfigurationSettings.AppSettings["Cassetes"];
+                var bankomat = new Bankomat();
+                IReader reader = new TxtReader();
+                var list = reader.Read(path);
                 bankomat.InputCassettes(list);
                 while (true)
                 {
-                    System.Console.WriteLine("Balance");
-                    foreach (Cassetes.Cassetes item in list)
+                    System.Console.WriteLine(@"Balance");
+                    foreach (var item in list.Where(item => item.Count != 0))
                     {
-                        if (item.Count != 0)
-                        {
-                            System.Console.WriteLine(item.Nominal);
-                        }
+                        System.Console.WriteLine(item.Nominal);
                     }
-                    System.Console.WriteLine("Menu:\ninput - input sum;\nexit - exit from bankomat");
-                    string input = System.Console.ReadLine();
+                    System.Console.WriteLine(@"Menu:\ninput - input sum;\nexit - exit from bankomat");
+                    var input = System.Console.ReadLine();
                     if (input == "input")
                     {
-                        System.Console.WriteLine("Input sum:");
-                        string str = System.Console.ReadLine();
+                        System.Console.WriteLine(@"Input sum:");
+                        var str = System.Console.ReadLine();
                         int sum;
                         if (int.TryParse(str, out sum))
                         {
-                            var money = bankomat.Withdraw(sum);
+                            var money = bankomat.Withdraw(sum,path);
                             if (money.Count != 0)
                             {
-                                System.Console.WriteLine("Total shot:");
-                                for (int i = 0; i < money.Count; i++)
+                                System.Console.WriteLine(@"Total shot:");
+                                for (var i = 0; i < money.Count; i++)
                                 {
                                     if (money[i] != 0)
                                         System.Console.WriteLine("{0}:{1}", money[i], list[i].Nominal);

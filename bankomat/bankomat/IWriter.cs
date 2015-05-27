@@ -4,6 +4,6 @@ namespace Cassetes
 {
     public interface IWriter
     {
-      void Write(List<Cassetes> list);
+      void Write(List<Cassetes> list,string path);
     }
 }

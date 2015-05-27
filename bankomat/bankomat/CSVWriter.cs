@@ -6,9 +6,9 @@ namespace Cassetes
 {
     public class CsvWriter:IWriter
     {
-        public void Write(List<Cassetes> list)
+        public void Write(List<Cassetes> list,string path)
         {
-            StreamWriter sw = new StreamWriter("CSVFile.csv", false);
+            StreamWriter sw = new StreamWriter(path, false);
             try
             {
                 foreach (Cassetes itemCassetes in list)

@@ -6,9 +6,9 @@ namespace Cassetes
 {
     class TxtWriter:IWriter
     {
-        public void Write(List<Cassetes> list)
+        public void Write(List<Cassetes> list,string path)
         {
-            StreamWriter sw = new StreamWriter("bankomat.txt", false);
+            StreamWriter sw = new StreamWriter(path, false);
             try
             {
                 foreach (Cassetes item in list)

@@ -6,10 +6,10 @@ namespace Cassetes
 {
     public class TxtReader:IReader
     {
-        public List<Cassetes> Read()
+        public List<Cassetes> Read(string path)
         {
             List<Cassetes> list = new List<Cassetes>();
-            StreamReader sr = new StreamReader("bankomat.txt");
+            StreamReader sr = new StreamReader(path);
             try
             {
                 string line;

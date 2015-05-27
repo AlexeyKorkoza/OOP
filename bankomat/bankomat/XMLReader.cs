@@ -6,13 +6,13 @@ namespace Cassetes
 {
    public class XmlReader: IReader
     {        
-       public List<Cassetes> Read()
+       public List<Cassetes> Read(string path)
         {
            List<Cassetes> list = new List<Cassetes>();
            try
            {
                XmlDocument xDoc = new XmlDocument();
-               xDoc.Load("XMLFile.xml");
+               xDoc.Load(path);
                XmlElement xRoot = xDoc.DocumentElement;
                if (xRoot != null)
                    foreach (XmlElement xnode in xRoot)

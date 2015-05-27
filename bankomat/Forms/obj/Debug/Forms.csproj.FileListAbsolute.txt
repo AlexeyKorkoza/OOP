@@ -7,3 +7,5 @@ C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\obj\Debug\Forms.Properties.
 C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\obj\Debug\Forms.csproj.GenerateResource.Cache
 C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\obj\Debug\Forms.exe
 C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\obj\Debug\Forms.pdb
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\bin\Debug\bankomat.dll
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\bin\Debug\bankomat.pdb

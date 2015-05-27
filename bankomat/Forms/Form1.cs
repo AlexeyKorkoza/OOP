@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using Cassetes;
+using Forms.Properties;
 
 namespace Forms
 {
     public partial class Form1 : Form
     {
+        OpenFileDialog _open = null;
+        readonly Bankomat _bankomat = new Bankomat();
+        List<Cassetes.Cassetes> _list  = new List<Cassetes.Cassetes>(); 
         public Form1()
         {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace Forms
         
         private void button6_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length > 1)
+            if (textBox1.Text.Length > 0)
             {
                 char[] str = textBox1.Text.ToCharArray();
                 textBox1.Text = "";
@@ -36,19 +36,17 @@ namespace Forms
 
         private void buttonCassetes_Click(object sender, EventArgs e)
         {
-            OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "(*.json;*.csv;*.xml;*.txt)|*.json;*.csv;*.xml;*.txt";
-            if (open.FileName == "")
+            Formatfiles loading = new Formatfiles();
+            _open = new OpenFileDialog {Filter = Resources.Form1_buttonCassetes_Click____json___csv___xml___txt____json___csv___xml___txt};
+            if (_open.FileName == "")
             {
-                string FileName = open.FileName;
-                if (open.ShowDialog() == DialogResult.OK)
-                {
-                    using (var sr = new StreamReader(open.FileName))
-                    {
-                        var str = sr.ReadToEnd();
-                        listBox1.Items.Add(str.ToString());
-                    }
-                }
+                if (_open.ShowDialog() != DialogResult.OK) return;
+                    _list = loading.Loading(_open.FileName);
+                    _bankomat.InputCassettes(_list);
+            }
+            foreach (var t in _list.Where(t => t.Count != 0))
+            {
+                richTextBox1.Text += t.Nominal+"\n";
             }
         }
 
@@ -59,24 +57,49 @@ namespace Forms
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            string pattern = @"[0-9]";
-            Match isMatch = Regex.Match(textBox1.Text, pattern, RegexOptions.IgnoreCase);
-            if (!isMatch.Success || Convert.ToInt32(textBox1.Text) <= 0)
+            try
             {
-                MessageBox.Show("Некорректный ввод");
-                textBox1.BackColor = Color.Yellow;
-                return;
+                string pattern = @"[0-9]";
+                Match isMatch = Regex.Match(textBox1.Text, pattern, RegexOptions.IgnoreCase);
+                if (!isMatch.Success || Convert.ToInt32(textBox1.Text) <= 0)
+                {
+                    textBox1.BackColor = Color.Yellow;
+                    textBox1.Text = string.Empty;
+                }
+                var money = _bankomat.Withdraw(Convert.ToInt32(textBox1.Text), _open.FileName);
+                for (var i = 0; i < money.Count; i++)
+                {
+                    if (money[i] != 0)
+                        richTextBox1.Text += money[i] + " " + _list[i].Nominal + "\n";
+                }
+                textBox1.Text = string.Empty;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            listBox1.Text = string.Empty;
+            richTextBox1.Text = string.Empty;
+            textBox1.BackColor = Color.White;
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        public void button10_Click(object sender, EventArgs e)
         {
-            textBox1.Text += (sender as Button).Text;
-        }        
+            var button = sender as Button;
+            if (button != null) textBox1.Text += button.Text;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            richTextBox1.Enabled = false;
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            textBox1.BackColor = Color.White;
+        }
     }
 }

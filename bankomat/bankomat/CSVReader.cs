@@ -6,10 +6,10 @@ namespace Cassetes
 {
     public class CsvReader : IReader
     {
-        public List<Cassetes> Read()
+        public List<Cassetes> Read(string path)
         {
             List<Cassetes> list = new List<Cassetes>();
-            StreamReader sr = new StreamReader("CSVFile.csv");
+            StreamReader sr = new StreamReader(path);
             try
             {
                 string line;
