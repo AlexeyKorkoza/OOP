@@ -58,7 +58,6 @@ namespace Forms
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
-            _bankomat.Serialize(ConfigurationManager.AppSettings["Serialize"]);
             Application.Exit();
         }
 
@@ -66,6 +65,10 @@ namespace Forms
         {
             try
             {
+                if (_open.FileName == String.Empty)
+                {
+                    MessageBox.Show(@"Кассеты не вставлены");
+                }
                 string pattern = @"[0-9]";
                 Match isMatch = Regex.Match(textBox1.Text, pattern, RegexOptions.IgnoreCase);
                 if (!isMatch.Success || Convert.ToInt32(textBox1.Text) <= 0)
@@ -101,8 +104,6 @@ namespace Forms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            _bankomat = Bankomat.Deserialize(ConfigurationManager.AppSettings["SerializationFile"]) ?? new Bankomat();
-             DisplayMoney();
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -118,6 +119,7 @@ namespace Forms
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             _bankomat.DeleteCassetes();
+            _open.FileName = String.Empty;
             MessageBox.Show(@"Кассеты удалены");
         }
     }

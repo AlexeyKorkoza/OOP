@@ -9,6 +9,7 @@ namespace Cassetes
     [Serializable]
     public class Bankomat
     {
+        
         private List<Cassetes> _list = new List<Cassetes>(); 
         private int _min = int.MaxValue;
         public List<int> Withdraw(int m,string path)
@@ -63,34 +64,6 @@ namespace Cassetes
             {
                 return _list.Sum(cassetese => cassetese.Nominal*cassetese.Count);
             }
-        }
-
-        public void Serialize(string path)
-        {
-            Stream testFileStream = File.Create(path);
-            var serializer = new BinaryFormatter();
-            serializer.Serialize(testFileStream, this);
-            testFileStream.Close();
-        }
-
-        public static Bankomat Deserialize(string path)
-        {
-            Stream stream = Stream.Null;
-            try
-            {
-                stream = File.OpenRead(path);
-                var deserializer = new BinaryFormatter();
-                var cashMachine = (Bankomat)deserializer.Deserialize(stream);
-                stream.Close();
-                return cashMachine;
-            }
-            catch (Exception)
-            {
-                stream.Close();
-                return null;
-            }
-            
-
         }
     }
 }
