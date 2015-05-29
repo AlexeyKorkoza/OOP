@@ -1,0 +1,5 @@
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\bankomat\bin\Debug\bankomat.dll
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\bankomat\bin\Debug\bankomat.pdb
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\bankomat\obj\Debug\ATM.csprojResolveAssemblyReference.cache
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\bankomat\obj\Debug\bankomat.dll
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\bankomat\obj\Debug\bankomat.pdb

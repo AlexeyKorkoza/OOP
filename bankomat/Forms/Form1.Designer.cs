@@ -33,14 +33,15 @@
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.buttonBackSpace = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonExit
             // 
-            this.buttonExit.Location = new System.Drawing.Point(279, 70);
+            this.buttonExit.Location = new System.Drawing.Point(279, 277);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(130, 23);
             this.buttonExit.TabIndex = 0;
@@ -50,7 +51,7 @@
             // 
             // buttonCassetes
             // 
-            this.buttonCassetes.Location = new System.Drawing.Point(279, 41);
+            this.buttonCassetes.Location = new System.Drawing.Point(279, 248);
             this.buttonCassetes.Name = "buttonCassetes";
             this.buttonCassetes.Size = new System.Drawing.Size(130, 23);
             this.buttonCassetes.TabIndex = 1;
@@ -60,7 +61,7 @@
             // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(146, 150);
+            this.buttonOK.Location = new System.Drawing.Point(177, 251);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 2;
@@ -70,7 +71,7 @@
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(279, 12);
+            this.buttonClear.Location = new System.Drawing.Point(279, 188);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(130, 23);
             this.buttonClear.TabIndex = 3;
@@ -80,26 +81,27 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 124);
+            this.textBox1.Location = new System.Drawing.Point(15, 225);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(237, 20);
             this.textBox1.TabIndex = 4;
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
-            // button6
+            // buttonBackSpace
             // 
-            this.button6.Location = new System.Drawing.Point(40, 150);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "<--";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.buttonBackSpace.Location = new System.Drawing.Point(15, 251);
+            this.buttonBackSpace.Name = "buttonBackSpace";
+            this.buttonBackSpace.Size = new System.Drawing.Size(75, 23);
+            this.buttonBackSpace.TabIndex = 7;
+            this.buttonBackSpace.Text = "<--";
+            this.buttonBackSpace.UseVisualStyleBackColor = true;
+            this.buttonBackSpace.Click += new System.EventHandler(this.button6_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 108);
+            this.label1.Location = new System.Drawing.Point(12, 198);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 17;
@@ -109,18 +111,31 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(10, 13);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(238, 79);
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(408, 173);
             this.richTextBox1.TabIndex = 18;
             this.richTextBox1.Text = "";
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(279, 217);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(130, 23);
+            this.buttonDelete.TabIndex = 19;
+            this.buttonDelete.Text = "Delete of cassetes";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 193);
+            this.ClientSize = new System.Drawing.Size(421, 312);
+            this.ControlBox = false;
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.buttonBackSpace);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonOK);
@@ -141,9 +156,10 @@
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button buttonBackSpace;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }
 

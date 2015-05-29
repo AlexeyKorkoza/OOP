@@ -3,14 +3,12 @@ using Cassetes;
 using System.Configuration;
 using System.Linq;
 
-
 namespace Console
 {
     class Program
     {
         static void Main()
         {
-          
             try
             {
                 var path = ConfigurationSettings.AppSettings["Cassetes"];

@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
 using Cassetes;
-using Cassetes = Cassetes.Cassetes;
 
 namespace Forms
 {
     public class Formatfiles
     {
-        public List<global::Cassetes.Cassetes> Loading(string path)
+        public List<Cassetes.Cassetes> Loading(string path)
         {
-            IReader reader = null;
-            List<global::Cassetes.Cassetes> list = new List<global::Cassetes.Cassetes>();
+            IReader reader;
+            var list = new List<Cassetes.Cassetes>();
             var maStrings = path.Split('.');
             if (maStrings[1] == "json")
             {

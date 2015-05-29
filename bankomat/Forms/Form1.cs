@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -11,12 +12,20 @@ namespace Forms
 {
     public partial class Form1 : Form
     {
-        OpenFileDialog _open = null;
-        readonly Bankomat _bankomat = new Bankomat();
+        OpenFileDialog _open;
+        private Bankomat _bankomat = new Bankomat();
         List<Cassetes.Cassetes> _list  = new List<Cassetes.Cassetes>(); 
         public Form1()
         {
             InitializeComponent();
+        }
+
+        public void DisplayMoney()
+        {
+            foreach (var t in _list.Where(t => t.Count != 0))
+            {
+                richTextBox1.Text += t.Nominal + "\n";
+            }
         }
         
         private void button6_Click(object sender, EventArgs e)
@@ -44,14 +53,12 @@ namespace Forms
                     _list = loading.Loading(_open.FileName);
                     _bankomat.InputCassettes(_list);
             }
-            foreach (var t in _list.Where(t => t.Count != 0))
-            {
-                richTextBox1.Text += t.Nominal+"\n";
-            }
+            DisplayMoney();
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
+            _bankomat.Serialize(ConfigurationManager.AppSettings["Serialize"]);
             Application.Exit();
         }
 
@@ -94,12 +101,24 @@ namespace Forms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            richTextBox1.Enabled = false;
+            _bankomat = Bankomat.Deserialize(ConfigurationManager.AppSettings["SerializationFile"]) ?? new Bankomat();
+             DisplayMoney();
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             textBox1.BackColor = Color.White;
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            _bankomat.DeleteCassetes();
+            MessageBox.Show(@"Кассеты удалены");
         }
     }
 }

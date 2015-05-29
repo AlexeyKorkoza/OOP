@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bankomat", "bankomat\bankomat.csproj", "{74EDE409-52C7-4FAA-81F8-FAB92351632F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATM", "bankomat\ATM.csproj", "{74EDE409-52C7-4FAA-81F8-FAB92351632F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "Console\Console.csproj", "{421D5391-15CE-416F-B192-E6092FF6A304}"
 EndProject
