@@ -1,0 +1,6 @@
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Console\bin\level\Console.exe.config
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Console\bin\level\Console.exe
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Console\bin\level\bankomat.dll
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Console\bin\level\log4net.dll
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Console\obj\level\Console.csprojResolveAssemblyReference.cache
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Console\obj\level\Console.exe

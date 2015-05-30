@@ -1,23 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Cassetes;
 using Forms.Properties;
+using log4net;
+using log4net.Config;
 
 namespace Forms
 {
     public partial class Form1 : Form
     {
         OpenFileDialog _open;
-        private Bankomat _bankomat = new Bankomat();
-        List<Cassetes.Cassetes> _list  = new List<Cassetes.Cassetes>(); 
+        private readonly Bankomat _bankomat = new Bankomat();
+        List<Cassetes.Cassetes> _list  = new List<Cassetes.Cassetes>();
+        public static readonly ILog Log = LogManager.GetLogger(typeof(Form1));
         public Form1()
         {
+            Log.Info("Start Program");
             InitializeComponent();
+            DOMConfigurator.Configure();
         }
 
         public void DisplayMoney()
@@ -27,37 +31,58 @@ namespace Forms
                 richTextBox1.Text += t.Nominal + "\n";
             }
         }
-        
+
         private void button6_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length > 0)
+            try
             {
-                char[] str = textBox1.Text.ToCharArray();
-                textBox1.Text = "";
-                for (int i = 0; i < str.Length - 1; i++)
+                if (textBox1.Text.Length > 0)
                 {
-                    textBox1.Text += str[i];
+                    var str = textBox1.Text.ToCharArray();
+                    textBox1.Text = "";
+                    for (var i = 0; i < str.Length - 1; i++)
+                    {
+                        textBox1.Text += str[i];
+                    }
                 }
+                else
+                    textBox1.Text = "";
             }
-            else
-                textBox1.Text = "";
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+                Log.Fatal(exception.Message);
+            }
         }
 
         private void buttonCassetes_Click(object sender, EventArgs e)
         {
-            Formatfiles loading = new Formatfiles();
-            _open = new OpenFileDialog {Filter = Resources.Form1_buttonCassetes_Click____json___csv___xml___txt____json___csv___xml___txt};
-            if (_open.FileName == "")
+            try
             {
-                if (_open.ShowDialog() != DialogResult.OK) return;
+                var loading = new Formatfiles();
+                _open = new OpenFileDialog
+                {
+                    Filter = Resources.Form1_buttonCassetes_Click____json___csv___xml___txt____json___csv___xml___txt
+                };
+                if (_open.FileName == "")
+                {
+                    if (_open.ShowDialog() != DialogResult.OK) return;
                     _list = loading.Loading(_open.FileName);
                     _bankomat.InputCassettes(_list);
+                    Log.Info("Input Cassetes");
+                }
+                DisplayMoney();
             }
-            DisplayMoney();
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+                Log.Fatal(exception.Message);
+            }
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
+            Log.Info("Exit");
             Application.Exit();
         }
 
@@ -65,7 +90,7 @@ namespace Forms
         {
             try
             {
-                if (_open.FileName == String.Empty)
+                if (_open.FileName == string.Empty || _list.Count==0)
                 {
                     MessageBox.Show(@"Кассеты не вставлены");
                 }
@@ -77,6 +102,7 @@ namespace Forms
                     textBox1.Text = string.Empty;
                 }
                 var money = _bankomat.Withdraw(Convert.ToInt32(textBox1.Text), _open.FileName);
+                Log.Info("Sum:"+Convert.ToInt32(textBox1.Text));
                 for (var i = 0; i < money.Count; i++)
                 {
                     if (money[i] != 0)
@@ -86,6 +112,7 @@ namespace Forms
             }
             catch (Exception exception)
             {
+                Log.Fatal(exception.Message);
                 MessageBox.Show(exception.Message);
             }
         }
@@ -104,6 +131,7 @@ namespace Forms
 
         private void Form1_Load(object sender, EventArgs e)
         {
+          
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -111,16 +139,13 @@ namespace Forms
             textBox1.BackColor = Color.White;
         }
 
-        private void textBox1_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void buttonDelete_Click(object sender, EventArgs e)
+      private void buttonDelete_Click(object sender, EventArgs e)
         {
             _bankomat.DeleteCassetes();
             _open.FileName = String.Empty;
             MessageBox.Show(@"Кассеты удалены");
+            Log.Info("Delete Cassetes");
+          richTextBox1.Text = string.Empty;
         }
     }
 }

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Cassetes
 {
-    [Serializable]
     public class Bankomat
     {
-        
         private List<Cassetes> _list = new List<Cassetes>(); 
         private int _min = int.MaxValue;
         public List<int> Withdraw(int m,string path)

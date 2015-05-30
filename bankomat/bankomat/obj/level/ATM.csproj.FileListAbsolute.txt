@@ -1,0 +1,2 @@
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\bankomat\bin\level\bankomat.dll
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\bankomat\obj\level\bankomat.dll
