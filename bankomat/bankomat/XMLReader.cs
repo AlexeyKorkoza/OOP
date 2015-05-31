@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
 using System.Xml;
 
 namespace Cassetes
 {
    public class XmlReader: IReader
-    {        
+    {
        public List<Cassetes> Read(string path)
-        {
+       {
            List<Cassetes> list = new List<Cassetes>();
            try
            {
@@ -28,11 +31,11 @@ namespace Cassetes
                        list.Add(cassetes);
                    }
            }
-           catch(XmlException ex)
+           catch (XmlException ex)
            {
                Console.WriteLine(ex.Message);
            }
-            return list;
-        }
-    }
-}
+           return list;
+       }
+   } 
+   }

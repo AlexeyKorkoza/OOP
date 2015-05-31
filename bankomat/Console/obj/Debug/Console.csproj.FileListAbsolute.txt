@@ -7,3 +7,4 @@ C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Console\obj\Debug\Console.exe
 C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Console\obj\Debug\Console.pdb
 C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Console\bin\Debug\bankomat.dll
 C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Console\bin\Debug\log4net.dll
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Console\bin\Debug\log4net.xml

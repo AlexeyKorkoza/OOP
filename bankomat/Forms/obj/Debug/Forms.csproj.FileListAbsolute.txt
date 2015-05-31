@@ -10,3 +10,4 @@ C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\obj\Debug\Forms.pdb
 C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\bin\Debug\bankomat.dll
 C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\bin\Debug\bankomat.pdb
 C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\bin\Debug\log4net.dll
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\bin\Debug\log4net.xml

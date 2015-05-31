@@ -8,7 +8,7 @@ namespace Cassetes
     {
         public List<Cassetes> Read(string path)
         {
-            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(List<Cassetes>));
+            var json = new DataContractJsonSerializer(typeof(List<Cassetes>));
             Stream fstream = new FileStream(path,FileMode.Open);
             var temp = (List<Cassetes>)json.ReadObject(fstream);
             fstream.Close();

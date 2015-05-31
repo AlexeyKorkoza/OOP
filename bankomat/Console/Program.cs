@@ -12,12 +12,17 @@ namespace Console
         public static readonly ILog Log = LogManager.GetLogger(typeof(Program)); 
         static void Main()
         {
-            DOMConfigurator.Configure();    
+            
+            XmlConfigurator.Configure();
+            //a piece of magic
             Log.Info("Start Program");
             try
             {
-                var path = ConfigurationSettings.AppSettings["Cassetes"];
-                var bankomat = new Bankomat();
+                var path = ConfigurationManager.AppSettings["Cassetes"];//навёл мышью он предложил юзать другую штуку, юзаем её
+                var bankomat = new Bankomat();//больше не предлогает я то видел,но нажимал алт+ентер на апп(( это руками писать надо
+                //вроде все?
+                //я откуда знаю что тебе ещё надо смотри
+                //пока все, буду смотреть сериал xmlson.
                 IReader reader = new TxtReader();
                 var list = reader.Read(path);
                 bankomat.InputCassettes(list);

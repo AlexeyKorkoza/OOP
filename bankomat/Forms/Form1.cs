@@ -16,19 +16,29 @@ namespace Forms
         OpenFileDialog _open;
         private readonly Bankomat _bankomat = new Bankomat();
         List<Cassetes.Cassetes> _list  = new List<Cassetes.Cassetes>();
-        public static readonly ILog Log = LogManager.GetLogger(typeof(Form1));
+        public static readonly ILog Log = LogManager.GetLogger(typeof(Form1));     
         public Form1()
         {
-            Log.Info("Start Program");
             InitializeComponent();
-            DOMConfigurator.Configure();
+            XmlConfigurator.Configure();
+            Log.Info("Start Program");
         }
-
         public void DisplayMoney()
         {
-            foreach (var t in _list.Where(t => t.Count != 0))
+            try
             {
-                richTextBox1.Text += t.Nominal + "\n";
+                foreach (var t in _list.Where(t => t.Count != 0))
+                {
+                    richTextBox1.Text += t.Nominal + "\n";
+                }
+                if (richTextBox1.Text.Length != 0) return;
+                MessageBox.Show(@"Error");
+                Log.Fatal("field - empty");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+                Log.Fatal(exception.Message);
             }
         }
 
@@ -129,11 +139,6 @@ namespace Forms
             if (button != null) textBox1.Text += button.Text;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-          
-        }
-
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             textBox1.BackColor = Color.White;
@@ -142,7 +147,7 @@ namespace Forms
       private void buttonDelete_Click(object sender, EventArgs e)
         {
             _bankomat.DeleteCassetes();
-            _open.FileName = String.Empty;
+            _open.FileName = string.Empty;
             MessageBox.Show(@"Кассеты удалены");
             Log.Info("Delete Cassetes");
           richTextBox1.Text = string.Empty;
