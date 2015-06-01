@@ -11,3 +11,9 @@ C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\bin\Debug\bankomat.dll
 C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\bin\Debug\bankomat.pdb
 C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\bin\Debug\log4net.dll
 C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\bin\Debug\log4net.xml
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\bin\Debug\en-US\Forms.resources.dll
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\bin\Debug\ru\Forms.resources.dll
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\obj\Debug\Forms.Form1.en-US.resources
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\obj\Debug\Forms.Form1.ru.resources
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\obj\Debug\en-US\Forms.resources.dll
+C:\Users\lesha\Desktop\lol\OOP-master\bankomat\Forms\obj\Debug\ru\Forms.resources.dll

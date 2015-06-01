@@ -8,6 +8,8 @@ using Cassetes;
 using Forms.Properties;
 using log4net;
 using log4net.Config;
+using System.ComponentModel;
+using System.Globalization;
 
 namespace Forms
 {
@@ -152,5 +154,48 @@ namespace Forms
             Log.Info("Delete Cassetes");
           richTextBox1.Text = string.Empty;
         }
+      private void richTextBox1_TextChanged(object sender, EventArgs e)
+      {
+
+      }
+
+      private void toolStripStatusLabel2_Click_1(object sender, EventArgs e)
+      {
+
+      }
+
+      private void русскийToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+          ChangeLanguage("ru-RU");
+      }
+
+      private void English_Click(object sender, EventArgs e)
+      {
+          ChangeLanguage("en-US");
+      }
+
+      private void ChangeLanguage(string newLanguageString)
+      {
+          ComponentResourceManager resources = new ComponentResourceManager(typeof(Form1));
+          CultureInfo newCultureInfo = new CultureInfo(newLanguageString);
+          foreach (Control c in this.Controls)
+          {
+              resources.ApplyResources(c, c.Name, newCultureInfo);
+          }
+          resources.ApplyResources(this, "$this", newCultureInfo);
+          foreach (var item in SS.Items.Cast<ToolStripItem>().Where(item => (item is ToolStripStatusLabel) != false))
+          {
+              resources.ApplyResources(item, item.Name, newCultureInfo);
+          }
+          TSDD.Text = newCultureInfo.NativeName;
+          SetCurrenLanguageButtonChecked();
+      }
+      private void SetCurrenLanguageButtonChecked()
+      {
+          foreach (ToolStripMenuItem languageButton in TSDD.DropDownItems)
+          {
+              languageButton.Checked = (languageButton.Text == TSDD.Text);
+          }
+      }
     }
 }
